@@ -1,9 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider";
 
 const Header = () => {
   const { user ,userOut} = useContext(AuthContext);
+
+  // dark theme
+
+
+  // .............................
   
   const Out=()=>{
     userOut()
@@ -35,6 +40,21 @@ const Header = () => {
           dashboard
         </NavLink>
       </li>
+      <li className="mr-2 ml-2">
+        <NavLink
+          to="/medicines"
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "active" : ""
+          }
+        >
+          Medicines
+        </NavLink>
+      </li>
+
+
+
+
+
 
       <li className="mx-2">
         <NavLink
@@ -83,7 +103,13 @@ const Header = () => {
               Register
             </NavLink>
           </li>
+
+          
         }
+
+        <li>
+          <Link>{user?.displayName}</Link>
+           </li>
     
     </>
   );
@@ -117,6 +143,7 @@ const Header = () => {
         <Link to="/home" className="btn btn-ghost normal-case text-xl">
           Doctors-Portal
         </Link>
+      
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{menuIteam}</ul>

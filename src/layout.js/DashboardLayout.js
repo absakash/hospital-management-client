@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import Header from "../shared/Header";
 import { Link, Outlet } from "react-router-dom";
+import { AuthContext } from "../context/AuthProvider";
+import useAdmin from "../components/hooks/useAdmin";
 
 const DashboardLayout = () => {
+  const { user } = useContext(AuthContext);
+  
+
+  const handleNavLinkClick = () => {
+    const checkbox = document.getElementById("my-drawer-2");
+    if (checkbox.checked) {
+      checkbox.checked = false;
+    }
+  };
   return (
     <div>
       <Header></Header>
@@ -22,24 +33,26 @@ const DashboardLayout = () => {
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
             {/* Sidebar content here */}
-            <li>
-              <Link to='/dashboard'>My appointment </Link>
+            <li onClick={handleNavLinkClick}>
+              <Link to="/dashboard">My appointment </Link>
             </li>
+            {
+              <>
+                <li onClick={handleNavLinkClick}>
+                  <Link to="/dashboard/users">All Users</Link>
+                </li>
+              </>
+            }
+
             <li>
-              <Link to='/dashboard/users'>All Users</Link>
+              <Link to="/dashboard/doctor">Add doctor</Link>
             </li>
-           
-            <li>
-              <Link to='/dashboard/doctor'>Add doctor</Link>
-            </li>
-            <li>
-              <Link to='/dashboard/manageDoctors'>Manage Doctors</Link>
+            <li htmlFor="my-drawer-2" onClick={handleNavLinkClick}>
+              <Link to="/dashboard/manageDoctors">Manage Doctors</Link>
             </li>
           </ul>
         </div>
       </div>
-
-   
     </div>
   );
 };

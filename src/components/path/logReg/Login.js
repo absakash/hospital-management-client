@@ -1,20 +1,24 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider";
 import useToken from "../../hooks/useToken";
 import toast from "react-hot-toast";
 
 const Login = () => {
-
+    const navigate=useNavigate()
+    const location=useLocation()
+  const from = location.state?.from?.pathname || "/";
     const {LoginIn}=useContext(AuthContext)
     const [loginError,setLoginError]=useState('')
-    const navigate=useNavigate()
+  
     const [loginEmail,setLoginEmail]=useState('');
 
     const [token]=useToken(loginEmail)
     if(token){
       // navigate('/');
+      navigate(from, { replace: true });
+
     }
     const handleLogin=data=>{
         console.log(data)
@@ -25,6 +29,7 @@ const Login = () => {
             setLoginError('')
             toast.success('logged in......')
             setLoginEmail(data.email)
+
         }).catch(error=>{
             console.log(error)
             setLoginError(error.message)
@@ -36,11 +41,11 @@ const Login = () => {
   const { register, handleSubmit } = useForm();
 //   const [data, setData] = useState("");
   return (
-    <div className="h-[700px] flex justify-center items-center">
-      <div className="w-96 p-6">
+    <div className="h-[700px] flex justify-center items-center ">
+      <div className="w-96 p-10 rounded-3xl shadow-2xl">
         <h2 className="text-4xl font-semibold">Login now</h2>
 
-        <form onSubmit={handleSubmit(handleLogin)}>
+        <form className="" onSubmit={handleSubmit(handleLogin)}>
           <div className="form-control w-full max-w-xs mt-2">
             <label className="label">
               <span className="label-text">Email : </span>

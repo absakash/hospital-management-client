@@ -39,7 +39,7 @@ const ManageDoctors = () => {
  }
   return (
     <div>
-      here i will manage the doctors ----- {doctors?.length}
+    
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
@@ -52,7 +52,7 @@ const ManageDoctors = () => {
               </th>
               <th>Name</th>
               <th>Job</th>
-              <th>Favorite Color</th>
+              <th>Rated</th>
               <th></th>
             </tr>
           </thead>
@@ -78,18 +78,18 @@ const ManageDoctors = () => {
                     </div>
                     <div>
                       <div className="font-bold">{doctor.name}</div>
-                      <div className="text-sm opacity-50">China</div>
+                      <div className="text-sm opacity-50">{doctor.speciality}</div>
                     </div>
                   </div>
                 </td>
                 <td>
-                  Carroll Group
+                  M.B.B.S
                   <br />
                   <span className="badge badge-ghost badge-sm">
-                    Tax Accountant
+                    Accepted
                   </span>
                 </td>
-                <td>Red</td>
+                <td>Scholar</td>
                 <th>
                   <label
                     onClick={()=>SetDeletingDoctor(doctor)}

@@ -12,16 +12,17 @@ const Myappointment = () => {
         queryKey:['bookings',user?.email],
         queryFn: async()=>{
             const res=await fetch(url,{
-              headers:{
-                authorization:`bearer ${localStorage.getItem('access_token')}`
-              }
+              // headers:{
+              //   authorization:`bearer ${localStorage.getItem('access_token')}`
+              // }
             })
             const data=await res.json()
+            console.log("'appointment ",data);
             return data;
         }
     })
     if(isLoading){
-      return <h2>loading.......</h2>
+      return <h2>loading mer.......</h2>
     }
   return (
     <div>
@@ -43,7 +44,7 @@ const Myappointment = () => {
           <tbody>
             {/* row 1 */}
           {
-            booked.map((book,i)=>  <tr
+           booked && booked.map((book,i)=>  <tr
             key={i}
             >
                 <th>{1+i}</th>

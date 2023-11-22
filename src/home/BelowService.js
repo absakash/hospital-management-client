@@ -1,5 +1,6 @@
 import React from "react";
 import treatment from '../assets/images/treatment.png'
+import { Link } from "react-router-dom";
 const BelowService = () => {
   return (
     <div className="hero py-10 ">
@@ -16,7 +17,7 @@ const BelowService = () => {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. In nam et, aspernatur, dolor nemo culpa porro velit commodi, nostrum autem molestiae nobis hic consequatur consectetur assumenda voluptatum non. Dicta, deleniti.
            
           </p>
-          <button className="btn btn-primary">Get Started</button>
+          <Link to='/appointment' className="btn btn-primary">Get Started</Link>
         </div>
       </div>
     </div>

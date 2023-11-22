@@ -18,14 +18,15 @@ const Register = () => {
   const [token] = useToken(createdUseremail);
 
   if (token) {
-    navigate("/");
+    //     navigate("/");
+    console.log("tokenoo", token);
   }
 
   const handleSign = (data) => {
     // console.log(data);
     setError("");
 
-    createUser(data.email, data.password)
+    createUser(data.email, data.password,data.name)
       .then((result) => {
         const user = result.user;
         toast.success("Registered successfully ......");
@@ -36,6 +37,7 @@ const Register = () => {
         updateUser(userinfo)
           .then(() => {
             saveUserDatabase(data.email, data.name);
+
           })
           .catch((error) => {
             console.log(error);
@@ -81,7 +83,7 @@ const Register = () => {
 
   return (
     <div className="flex h-[700px] items-center justify-center">
-      <div className="w-96 p-6">
+      <div className="w-96 p-10 rounded-2xl shadow-2xl">
         <h2 className="text-4xl font-semibold">Register here </h2>
 
         <form className="mt-5" onSubmit={handleSubmit(handleSign)}>

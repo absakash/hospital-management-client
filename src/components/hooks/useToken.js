@@ -5,6 +5,7 @@ const useToken=email=>{
     const [token,setToken]=useState('')
     
     useEffect(()=>{
+       if(email){
         fetch(`http://localhost:4000/jwt?email=${email}`)
         .then(res=>res.json())
         .then(data=>{
@@ -13,6 +14,7 @@ const useToken=email=>{
             setToken(data.access_token)
           }
         })
+       }
     },[email])
     return [token];
 }

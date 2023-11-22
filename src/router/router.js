@@ -8,7 +8,10 @@ import Myappointment from "../components/path/dashboard/Myappointment";
 import Payment from "../components/path/dashboard/Payment";
 import Login from "../components/path/logReg/Login";
 import Register from "../components/path/logReg/Register";
+import Medicines from "../components/path/medicine/Medicines";
 import DashboardLayout from "../layout.js/DashboardLayout";
+import AdminRouter from "./AdminRouter";
+import PrivateRouter from "./PrivateRouter";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../layout.js/Main");
@@ -47,6 +50,11 @@ const router=createBrowserRouter([
 
             },
             {
+                path:'/medicines',
+                element:<Medicines></Medicines>
+
+            },
+            {
                 path:'*',
                 element:<div>not found yetoo</div>
             }
@@ -59,7 +67,7 @@ const router=createBrowserRouter([
         children:[
             {
                 path:'/dashboard',
-                element:<Myappointment></Myappointment>
+                element:<PrivateRouter><Myappointment></Myappointment></PrivateRouter>
             },
             {
                 path:'/dashboard/users',

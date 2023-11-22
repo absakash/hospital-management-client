@@ -3,7 +3,7 @@ import footer from '../assets/images/footer.png'
 
 const Fotter = () => {
     return (
-        <footer
+        <footer 
         style={
             {
                background: `url(${footer})`,
@@ -12,7 +12,7 @@ const Fotter = () => {
         }
 
         
-        className=" p-10  text-black rounded-3xl shadow-2xl">
+        className=" p-10  text-black rounded-3xl shadow-2xl bg-slate-400">
  <div className='footer'>
  <div>
   
